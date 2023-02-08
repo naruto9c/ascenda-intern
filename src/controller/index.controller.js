@@ -50,7 +50,6 @@ const getAvailableDate = async(req, res, next) => {
 
         data = categoryFilter(offers, HOTEL_CATEGORY);
 
-
         //change customre date from string to Date object
         const customerCheckinDate = new Date(customerDate);
 
@@ -60,12 +59,11 @@ const getAvailableDate = async(req, res, next) => {
         //Requirement: one offer can have multiple merchants, choose the closet merchant in each offer.
         data = eachOfferOneMerchantFilter(data);
 
-        //Requirement: data return in different category, if data has the same category, choose the closet one.
-        const diffCategory = new Map();    
-        data = diffCategoryFilter(data, diffCategory);
+        //Requirement: data return in different category, if data has the same category, choose the closet one.   
+        data = diffCategoryFilter(data);
 
         //Requirement: choose only 2 closet offers in dataset
-        data = twoSmallestDistanceFilter(data, diffCategory);
+        data = twoSmallestDistanceFilter(data);
 
         //reform the data
         var finalData = {...datas};

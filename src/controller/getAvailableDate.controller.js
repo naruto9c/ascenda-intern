@@ -64,7 +64,7 @@ function eachOfferOneMerchantFilter(data)
     return MerchantFilter;
 }
 
-function diffCategoryFilter(data, diffCategory)
+function diffCategoryFilter(data)
 {
         /*  
         Make a map with key: category
@@ -73,7 +73,7 @@ function diffCategoryFilter(data, diffCategory)
             If yes, then take the minimum and change the offer
             If no, push the key and value into map
         */
-    //const diffCategory = new Map();
+    const diffCategory = new Map();
 
     //loop thorugh every Offer
     for(eachOffer of data)
@@ -124,7 +124,7 @@ function diffCategoryFilter(data, diffCategory)
     return diffCategoryFinal;
 }
 
-function twoSmallestDistanceFilter(data, diffCategory)
+function twoSmallestDistanceFilter(data)
 {
 
     /*
@@ -135,11 +135,21 @@ function twoSmallestDistanceFilter(data, diffCategory)
     Since the diffCategory Map has the unique category with the distance in value, copy that to the sortDistance array
     */
     const sortDistance = [];
-        
+
     //copy the previous map to the map with key is id and value is distance
-    diffCategory.forEach( (value) => {
-        sortDistance.push([value["id"], value["d"]])
-    });
+
+    for(eachOffer of data)
+    {
+        //take the id
+        const id = eachOffer["id"];
+
+        //take the distance 
+        const merchantArray = eachOffer["merchants"];
+        const merchant = merchantArray[0];
+        const distance = merchant["distance"];
+
+        sortDistance.push([id, distance]);
+    }
 
     //sort the array with distance
     sortDistance.sort( (a, b) => {

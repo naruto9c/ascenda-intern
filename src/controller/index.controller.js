@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const {URL} = require('../database')
+const {URL} = require('../database/database')
 
 const getAvailableDate = async(req, res, next) => {
     try{

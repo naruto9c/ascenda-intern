@@ -1,4 +1,6 @@
 
+//helper function for getAvailableDate API in index.controller
+
 function categoryFilter(data, category)
 {
     //filter out the category

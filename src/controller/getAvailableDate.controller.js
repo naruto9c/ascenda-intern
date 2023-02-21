@@ -10,7 +10,7 @@ function categoryFilter(data, category)
 function validDateFilter(data, customerCheckinDate)
 {
     //the validation date must be 5 days after comapre to customer checkin date
-    var requireDate = customerCheckinDate;
+    let requireDate = customerCheckinDate;
     requireDate.setDate(customerCheckinDate.getDate() + 5);
 
     const validDate = []
@@ -112,7 +112,7 @@ function diffCategoryFilter(data)
     //now we have the map with unique categories and closet distance with id
     //send data in the map
 
-    var diffCategoryFinal = [];
+    let diffCategoryFinal = [];
     diffCategory.forEach( (value, key) =>{
         for(eachOffer of data)
         {
